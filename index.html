@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Self-Check Kiosk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <p class="brand-name">Health Self-Check</p>
+        <p class="brand-sub">Walk-in kiosk &middot; BMI screening</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Check your BMI in under a minute</h1>
+      <p>Fill in your details below. Your result is shown right away, and a copy is kept on file so our staff can follow up if needed.</p>
+    </section>
+
+    <section class="card form-card" aria-labelledby="form-heading">
+      <h2 id="form-heading" class="visually-hidden">Your information</h2>
+
+      <form id="bmiForm" novalidate>
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required>
+          <span class="field-error" id="err-name"></span>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="Your Age" placeholder="1" min="1" max="120" required>
+            <span class="field-error" id="err-age"></span>
+          </div>
+
+          <div class="field">
+            <label for="sex">Sex</label>
+            <select id="sex" name="sex" required>
+              <option value="">Select</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+            </select>
+            <span class="field-error" id="err-sex"></span>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" name="weight" placeholder="0" min="1" step="0.1" required>
+            <span class="field-error" id="err-weight"></span>
+          </div>
+
+          <div class="field">
+            <label for="height">Height (cm)</label>
+            <input type="number" id="height" name="height" placeholder="0" min="1" step="0.1" required>
+            <span class="field-error" id="err-height"></span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Check My BMI</button>
+        <p class="form-note">Your result will be logged for clinic follow-up only.</p>
+      </form>
+    </section>
+
+    <section id="resultCard" class="card result-card hidden" aria-live="polite">
+      <div class="result-top">
+        <div>
+          <p class="result-label">Result for</p>
+          <p class="result-name" id="resultName">&mdash;</p>
+        </div>
+        <div class="result-badge" id="resultBadge">
+          <span id="resultBmi">0.0</span>
+          <small>BMI</small>
+        </div>
+      </div>
+
+      <p class="result-category" id="resultCategory">&mdash;</p>
+      <p class="result-message" id="resultMessage">&mdash;</p>
+
+      <div class="gauge" id="gauge" aria-hidden="true">
+        <div class="gauge-track">
+          <div class="gauge-zone zone-under"></div>
+          <div class="gauge-zone zone-normal"></div>
+          <div class="gauge-zone zone-over"></div>
+          <div class="gauge-zone zone-obese"></div>
+          <div class="gauge-marker" id="gaugeMarker"></div>
+        </div>
+        <div class="gauge-scale">
+          <span>15</span><span>18.5</span><span>25</span><span>30</span><span>40+</span>
+        </div>
+      </div>
+
+      <button type="button" class="btn-secondary" id="newCheckBtn">Start a New Check</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+/* ==========================================================================
+   Tokens
+   ========================================================================== */
+:root {
+  --bg: #F4F9FC;
+  --surface: #FFFFFF;
+  --ink: #12303E;
+  --ink-soft: #4C6C7A;
+  --teal: #3B9FE0;
+  --teal-dark: #2679B3;
+  --teal-tint: #DFF0FB;
+  --line: #DCEAF3;
+
+  --under: #4A90C4;
+  --under-tint: #E3F0FA;
+  --normal: #1F9C7E;
+  --normal-tint: #E1F7EF;
+  --over: #D98A2B;
+  --over-tint: #FBEEDC;
+  --obese: #C4523F;
+  --obese-tint: #FBE6E2;
+
+  --font-display: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --radius: 18px;
+  --shadow: 0 10px 30px rgba(15, 118, 110, 0.10);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.site-header {
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 640px;
+}
+
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+  position: relative;
+}
+
+.brand-mark::before {
+  content: "+";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.brand-sub {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.intro h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.intro p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.75rem;
+  border: 1px solid var(--line);
+}
+
+/* ==========================================================================
+   Form
+   ========================================================================== */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+  flex: 1;
+}
+
+.field-row {
+  display: flex;
+  gap: 1rem;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+input, select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: #FCFEFE;
+  color: var(--ink);
+  min-height: 48px;
+}
+
+input:focus, select:focus, button:focus-visible {
+  outline: 3px solid var(--teal-tint);
+  border-color: var(--teal);
+}
+
+input.invalid, select.invalid {
+  border-color: var(--obese);
+  background: var(--obese-tint);
+}
+
+.field-error {
+  min-height: 1.1em;
+  font-size: 0.78rem;
+  color: var(--obese);
+}
+
+.btn-primary, .btn-secondary {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border-radius: 12px;
+  border: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  min-height: 52px;
+}
+
+.btn-primary {
+  background: var(--teal);
+  color: #fff;
+  transition: background 0.15s ease;
+}
+
+.btn-primary:hover { background: var(--teal-dark); }
+
+.btn-secondary {
+  background: var(--teal-tint);
+  color: var(--teal-dark);
+  margin-top: 1.25rem;
+}
+
+.form-note {
+  margin: 0.85rem 0 0;
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ==========================================================================
+   Result card
+   ========================================================================== */
+.result-card {
+  border-width: 1.5px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.hidden { display: none; }
+
+.result-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.result-label {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.result-name {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+.result-badge {
+  font-family: var(--font-mono);
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  border: 2px solid currentColor;
+  min-width: 84px;
+}
+
+.result-badge span {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.result-badge small {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+
+.result-category {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  margin: 1rem 0 0.25rem;
+}
+
+.result-message {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* category color states, applied via JS on #resultCard */
+.result-card.state-under   { background: var(--under-tint);  border-color: var(--under);  color: var(--under); }
+.result-card.state-normal  { background: var(--normal-tint); border-color: var(--normal); color: var(--normal); }
+.result-card.state-over    { background: var(--over-tint);   border-color: var(--over);   color: var(--over); }
+.result-card.state-obese   { background: var(--obese-tint);  border-color: var(--obese);  color: var(--obese); }
+
+.result-card.state-under   .result-category,
+.result-card.state-normal  .result-category,
+.result-card.state-over    .result-category,
+.result-card.state-obese   .result-category { color: currentColor; }
+
+.result-card.state-under   .result-name,
+.result-card.state-normal  .result-name,
+.result-card.state-over    .result-name,
+.result-card.state-obese   .result-name,
+.result-card.state-under   .result-message,
+.result-card.state-normal  .result-message,
+.result-card.state-over    .result-message,
+.result-card.state-obese   .result-message { color: var(--ink); }
+
+/* ==========================================================================
+   Gauge (signature element)
+   ========================================================================== */
+.gauge { margin: 1.4rem 0 0.25rem; }
+
+.gauge-track {
+  position: relative;
+  height: 14px;
+  border-radius: 999px;
+  display: flex;
+  overflow: visible;
+}
+
+.gauge-zone { height: 100%; }
+.gauge-zone:first-child { border-radius: 999px 0 0 999px; }
+.gauge-zone:last-child { border-radius: 0 999px 999px 0; }
+
+/* zone widths mirror the BMI ranges 15-40+ mapped to 0-100% */
+.zone-under  { width: 14%; background: var(--under); }
+.zone-normal { width: 26%; background: var(--normal); }
+.zone-over   { width: 20%; background: var(--over); }
+.zone-obese  { width: 40%; background: var(--obese); }
+
+.gauge-marker {
+  position: absolute;
+  top: -6px;
+  width: 4px;
+  height: 26px;
+  background: var(--ink);
+  border-radius: 2px;
+  transform: translateX(-2px);
+  transition: left 0.4s ease;
+}
+
+.gauge-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem 1.25rem 2.5rem;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 600px) {
+  .field-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .card {
+    padding: 1.35rem;
+    border-radius: 14px;
+  }
+
+  .result-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  main { padding: 2rem 2rem 3rem; }
+}
